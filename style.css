@@ -1,0 +1,182 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 62.5%;
+
+  --ff-title: 'Montserrat';
+  --ff-body: 'DM Sans';
+  --ff-textScreen2: 'Dancing Script';
+
+  --fs-body: 1.6rem;
+  --fs-titleAndText: 2.4rem;
+
+  --fc-body: hsla(238, 27%, 28%, 1);
+  --fc-textScreen2: hsla(0, 0%, 0%, 1);
+  --fc-button: hsla(0, 0%, 100%, 1);
+
+  --bc-body: linear-gradient(45deg, hsla(254, 94%, 20%, 1) 0%, hsla(284, 100%, 50%, 1) 100%);
+  --bc-container: hsla(0, 0%, 100%, 1);
+  --bc-text: hsla(198, 32%, 92%, 1);
+  --bc-button: hsla(35, 100%, 50%, 1);
+}
+
+body {
+  font-size: var(--fs-body);
+
+  display: grid;
+  place-items: center;
+
+  height: 100vh;
+
+  background: linear-gradient(45deg,  #190361, #bb00ff);
+  animation: changingColors 10s infinite;
+  background-size: 200% 200%;
+}
+
+.hide {
+  display: none;
+}
+
+h1,
+h2 {
+  font-family: var(--ff-title);
+  font-weight: 700;
+  font-size: var(--fs-titleAndText);
+  line-height: 2.9rem;
+
+  color: var(--fc-body);
+}
+
+button,
+p {
+  font-family: var(--ff-body);
+  font-size: var(--fs-body);
+  line-height: 2.0rem;
+}
+
+main {
+  margin-top: -1.5rem;
+  padding: 4.8rem 6.4rem 6.4rem;
+
+  background: var(--bc-container);
+  box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.8);
+
+  border-radius: .5rem;
+
+  width: min-content(42.8rem, 90%);
+
+  text-align: center;
+}
+
+/* Screen 1 */
+section {
+  width: 30.0rem;
+}
+
+p {
+  font-weight: 400;
+
+  color: var(--fc-body);
+
+  margin: 1.4rem 0 2rem;
+}
+
+/* Screen 2 */
+.screen2 p {
+  background: var(--bc-text);
+  box-shadow: 2px 2px 2px rgba(85, 85, 85, 0.5);
+
+  font-family: 'Dancing Script';
+  font-weight: 400;
+  font-size: var(--fs-titleAndText);
+  line-height: 2.9rem;
+
+  color: var(--fc-textScreen2);
+
+  padding: 1rem;
+  margin: 1.7rem 0;
+}
+
+.btnReset {
+  background: var(--bc-button);
+
+  border-radius: .4rem;
+  border: none;
+
+  width: min-content(17.4rem, 90%);
+
+  font-weight: 700;
+
+  color: var(--fc-button);
+
+  padding: 1.6rem;
+  margin-top: 1.7rem;
+
+  transition: background 200ms;
+}
+
+.btnReset:hover {
+  background: #9b5a00;
+}
+
+/* Key Frames */
+.screen2 p {
+  animation: downtop 2.5s;
+}
+
+.btnTry {
+  place-self: center;
+  animation: balancar 100ms;
+  animation-iteration-count: infinite;
+  animation-direction: alternate-reverse;
+  animation-fill-mode: forwards;
+  animation-play-state: paused;
+  cursor: pointer;
+}
+
+.btnTry:hover {
+  animation-play-state: running;
+}
+
+@keyframes balancar {
+  0% {
+    transform: rotate(-2deg);
+  }
+
+  100% {
+    transform: rotate(2deg);
+  }
+}
+
+@keyframes downtop {
+  0% {
+    opacity: 0;
+
+    transform: translateY(15rem) scale(0.1);
+
+  }
+
+  100% {
+    opacity: 1;
+
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes changingColors {
+0% {
+  background-position: 0% 50%;
+}
+
+50% {
+  background-position: 100% 50%;
+}
+
+100% {
+  background-position: 0 50%;
+}
+}
