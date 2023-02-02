@@ -8,175 +8,187 @@
   font-size: 62.5%;
 
   --ff-title: 'Montserrat';
-  --ff-body: 'DM Sans';
-  --ff-textScreen2: 'Dancing Script';
+  --ff-textAndButton: 'DM Sans';
+  --ff-luckyPhrase: 'Dancing Script';
 
+  --fs-titleLuckyPhrase: 2.4rem;
+  --fs-textAndButton: 1.5rem;
   --fs-body: 1.6rem;
-  --fs-titleAndText: 2.4rem;
 
-  --fc-body: hsla(238, 27%, 28%, 1);
-  --fc-textScreen2: hsla(0, 0%, 0%, 1);
+  --fc-titleAndText: hsla(238, 27%, 28%, 1);
+  --fc-luckyPhrase: hsla(0, 0%, 0%, 1);
   --fc-button: hsla(0, 0%, 100%, 1);
 
-  --bc-body: linear-gradient(45deg, hsla(254, 94%, 20%, 1) 0%, hsla(284, 100%, 50%, 1) 100%);
-  --bc-container: hsla(0, 0%, 100%, 1);
-  --bc-text: hsla(198, 32%, 92%, 1);
-  --bc-button: hsla(35, 100%, 50%, 1);
+  --bg-body: linear-gradient(45deg, hsla(254, 94%, 20%, 1) 0%, hsla(284, 100%, 50%, 1) 100%);
+  --bg-main: hsla(0, 0%, 100%, 1);
+  --bg-button: #FF9500;
+  --bg-luckyPhrase: hsla(198, 32%, 92%, 1);
 }
 
 body {
   font-size: var(--fs-body);
 
+  background: var(--bg-body);
+
   display: grid;
   place-items: center;
-
   height: 100vh;
 
-  background: linear-gradient(45deg,  #190361, #bb00ff);
-  animation: changingColors 10s infinite;
   background-size: 200% 200%;
+
+  animation: changeBackground 10s ease infinite;
 }
 
 .hide {
   display: none;
 }
 
-h1,
-h2 {
-  font-family: var(--ff-title);
-  font-weight: 700;
-  font-size: var(--fs-titleAndText);
-  line-height: 2.9rem;
-
-  color: var(--fc-body);
-}
-
-button,
-p {
-  font-family: var(--ff-body);
-  font-size: var(--fs-body);
-  line-height: 2.0rem;
-}
-
 main {
-  margin-top: -1.5rem;
-  padding: 4.8rem 6.4rem 6.4rem;
+  background: var(--bg-main);
 
-  background: var(--bc-container);
   box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.8);
 
   border-radius: .5rem;
 
-  width: min-content(42.8rem, 90%);
+  width: clamp(32.8rem, 5rem + 40vw, 42.8rem);
+
+  padding: 4.8rem 6.4rem 6.4rem;
+  margin-top: -1.5rem;
 
   text-align: center;
 }
 
-/* Screen 1 */
-section {
-  width: 30.0rem;
+h1,
+h2,
+p {
+  color: var(--fc-titleAndText)
 }
 
-p {
-  font-weight: 400;
+h1,
+h2,
+.screen2 p {
+  font-size: var(--fs-titleLuckyPhrase);
+}
 
-  color: var(--fc-body);
+p,
+button {
+  font-size: var(--fs-textAndButton);
+  font-family: var(--ff-textAndButton);
+}
+
+
+.screen1 h1,
+h2 {
+  font-family: 'Montserrat';
+  font-weight: 700;
+  line-height: 2.9rem;
+}
+
+.screen1 p {
+  font-weight: 400;
+  line-height: 20px;
 
   margin: 1.4rem 0 2rem;
 }
 
-/* Screen 2 */
-.screen2 p {
-  background: var(--bc-text);
-  box-shadow: 2px 2px 2px rgba(85, 85, 85, 0.5);
-
-  font-family: 'Dancing Script';
-  font-weight: 400;
-  font-size: var(--fs-titleAndText);
-  line-height: 2.9rem;
-
-  color: var(--fc-textScreen2);
-
-  padding: 1rem;
-  margin: 1.7rem 0;
-}
-
-.btnReset {
-  background: var(--bc-button);
-
-  border-radius: .4rem;
-  border: none;
-
-  width: min-content(17.4rem, 90%);
-
-  font-weight: 700;
-
-  color: var(--fc-button);
-
-  padding: 1.6rem;
-  margin-top: 1.7rem;
-
-  transition: background 200ms;
-}
-
-.btnReset:hover {
-  background: #9b5a00;
-}
-
-/* Key Frames */
-.screen2 p {
-  animation: downtop 2.5s;
-}
-
 .btnTry {
-  place-self: center;
-  animation: balancar 100ms;
+  border: none;
+  background: none;
+
+  animation: toSwing 100ms;
   animation-iteration-count: infinite;
   animation-direction: alternate-reverse;
   animation-fill-mode: forwards;
   animation-play-state: paused;
-  cursor: pointer;
 }
 
 .btnTry:hover {
   animation-play-state: running;
 }
 
-@keyframes balancar {
-  0% {
-    transform: rotate(-2deg);
-  }
+.cookie {
+  width: clamp(20rem, 7rem + 25vw, 29.3rem);
+  cursor: pointer;
+}
 
-  100% {
-    transform: rotate(2deg);
-  }
+.screen2 p {
+  font-family: var(--ff-luckyPhrase);
+  font-weight: 400;
+  line-height: 2.9rem;
+
+  color: var(--fc-luckyPhrase);
+
+  width: clamp(20rem, 7rem + 25vw, 29.3rem);
+
+
+  background: var(--bg-luckyPhrase);
+  box-shadow: 2px 2px 2px rgba(85, 85, 85, 0.5);
+
+  padding: 1rem;
+  margin: 1.7rem 0;
+
+  animation: downtop 2s;
+}
+
+.cookieOpen {
+  width: clamp(20rem, 7rem + 25vw, 29.3rem);
+}
+
+.btnRetri {
+  background: var(--bg-button);
+  border-radius: 4px;
+
+  border: none;
+
+  width: clamp(15rem, 7rem + 25vw, 17.4rem);
+
+  font-weight: 700;
+  line-height: 2rem;
+
+  color: var(--fc-button);
+
+  padding: 1.6rem;
+  margin-top: 1.7rem;
+
+  transition: background .2s;
+}
+
+.btnRetri:hover {
+  background: #c27201;
 }
 
 @keyframes downtop {
   0% {
     opacity: 0;
-
-    transform: translateY(15rem) scale(0.1);
-
+    transform: translateY(160px) scale(0.3);
   }
 
   100% {
     opacity: 1;
-
-    transform: translateX(0) scale(1);
+    transform: translateY(0) scale(1);
   }
 }
 
-@keyframes changingColors {
-0% {
-  background-position: 0% 50%;
+@keyframes toSwing {
+  0% {
+    transform: rotate(-2deg);
+  }
+
+  50% {
+    transform: rotate(2deg);
+  }
 }
 
-50% {
-  background-position: 100% 50%;
-}
+@keyframes changeBackground {
+  0% {
+    background-position: 0% 50%;
+  }
 
-100% {
-  background-position: 0 50%;
-}
+  50% {
+    background-position:100% 50% ;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
 }
